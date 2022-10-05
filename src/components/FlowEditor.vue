@@ -48,8 +48,8 @@ const {
   addNodes,
   addEdges,
   getSelectedNodes,
-  applyEdgeChanges,
-  applyNodeChanges,
+  removeEdges,
+  removeNodes,
   project
 } = useVueFlow()
 
@@ -110,13 +110,13 @@ onConnect((params, type = opts.edgeType) => {
 
 onNodeDoubleClick((e) => {
   if (confirm('Delete node?')) {
-    applyNodeChanges([{type: 'remove', id: e.node.id}])
+    removeNodes([e.node])
   }
 })
 
 onEdgeClick((e) => {
   if (confirm('Delete edge?')) {
-    applyEdgeChanges([{ type: 'remove', id: e.edge.id }])
+    removeEdges([e.edge])
   }
 })
 
